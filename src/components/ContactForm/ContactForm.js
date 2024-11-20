@@ -1,23 +1,57 @@
-import './ContactForm.css'
-
-import React from 'react'
+import './ContactForm.css';
+import React, { useState } from 'react';
 
 const ContactForm = () => {
-  return (
-    <div className='form'>
-        <form>
-            <label> Your Name </label>
-            <input type='text' ></input>
-            <label> Email </label>
-            <input type='email' ></input>
-            <label> Subject </label>
-            <input type='text' ></input>
-            <label> Message </label>
-            <textarea rows="6" placeholder='Type Your Message Here' />
-            <button className='btn'>Submit</button>
-        </form>
-    </div>
-  )
-}
+  const [formData, setFormData] = useState({
+    subject: '',
+    message: '',
+  });
 
-export default ContactForm
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const mailtoLink = `mailto:cheronom142@gmail.com?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${encodeURIComponent(formData.message)}`;
+    window.location.href = mailtoLink;
+  };
+
+  return (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <label>Subject</label>
+        <input
+          type="text"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          placeholder="Enter the email subject"
+          required
+        />
+
+        <label>Message</label>
+        <textarea
+          rows="6"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Type your message here"
+          required
+        />
+
+        <button className="btn" type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default ContactForm;
