@@ -2,8 +2,16 @@ import project1 from '../../src/assets/project1.png'
 import project2 from '../../src/assets/project2.png'
 import project3 from '../../src/assets/project3.png'
 import project4 from '../../src/assets/project4.png'
+import cryptoverse from '../../src/assets/cryptoverse.png'
 
 const ProjectCardData = [
+    {
+        imgsrc: cryptoverse,
+        title: "Crypto App",
+        text: "Built and deployed a Cryptocurrency React application with data about all cryptocurrencies, cryptomarkets, and popular crypto news. Used Redux Toolkit, created UI using Ant Design and created charts using Chart.js with data fetching using Rapid API.",
+        livedemo: "https://cryptoapp-react-redux.netlify.app/",
+        sourcecode: "https://github.com/Cherono-mercy/cryptoapp-React",
+    },
     {
         imgsrc: project1,
         title: "Travel Website",
